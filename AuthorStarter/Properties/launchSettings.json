@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ContactManager": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:53270;http://localhost:53271"
+    }
+  }
+}
