@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ContactManager.Data;
 using Microsoft.AspNetCore.Authorization;
+using ContactManager.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,11 @@ builder.Services.AddAuthorization(options =>
         .RequireAuthenticatedUser()
         .Build();
 });
+
+// Authorization handlers.
+builder.Services.AddScoped<IAuthorizationHandler, ContactIsOwnerAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, ContactAdministratorsAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, ContactManagerAuthorizationHandler>();
 
 var app = builder.Build();
 
